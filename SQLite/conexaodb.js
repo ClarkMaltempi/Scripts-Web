@@ -2,7 +2,7 @@
 
 
 var db = openDatabase("Meubanco", "2.0", "Mybase", 4048);
-db.trasaction(function(tx){
+db.transaction(function(tx){
 	tx.executeSql("CREATE TABLE users(ID PRIMARY KEY, nome TEXT, senha TEXT)");
 });
 
