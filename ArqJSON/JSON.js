@@ -1,37 +1,22 @@
 
+var ajax = new XMLHttpRequest();
+//var resposta = " ";
+var i = 0;
+var dataSon = " ";
 
+ajax.open('GET', 'db.json'); //requisição do arquivo
 
-var usuario = {
-	id: 1,
-	nome: "Jose",
-	perfil:2,
-	dn: new Date()
-};
+ajax.responseType = 'json'; //Define o tipo de dado que irá receber
 
+ajax.send();
 
-JSON.stringify(usuario);//Transformar em uma string
+//Verifica a resposta do arquivo
+ajax.addEventListener('readystatechange', function() {
 
-var usuarioConvertido = JSON.parse(usuario);//Converter usuário para o formato
-
-//Visualização
-console.log(usuarioConvertido);
-console.table(usuarioConvertido);
-
-//Exemplo de um Array
-var usuario = [
-{
-	id: 1,
-	nome: "Jose",
-	perfil:2,
-	dn: new Date()
-}
-
-{
-	id: 2,
-	nome: "Jose",
-	perfil:2,
-	dn: new Date()
-}
-
-
-];
+    if (ajax.readyState === 4 && ajax.status === 200) {
+        // alert("Deu certo");
+        //console.log(ajax.response);
+        var resposta = ajax.response;
+	    console.log(resposta);
+    }
+});
